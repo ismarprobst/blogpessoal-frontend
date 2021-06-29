@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "strictPropertyInitialization": false, // resolver problema das models sem construtor, pois nao solicita inicializacao dos atributos
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
