@@ -2,3 +2,11 @@
 html{
     scroll-behavior: smooth;
 }
+
+.fs-54{
+    font-size: 52pt;
+}
+
+.fs-18{
+    font-size: 18pt;
+}
