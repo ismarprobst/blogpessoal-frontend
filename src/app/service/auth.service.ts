@@ -33,8 +33,6 @@ export class AuthService {
     return this.http.post<User>('https://blogpessoal-backend-ismarps.herokuapp.com/usuarios/cadastrar', user)
   }
 
- 
-
   logado() {
     let ok: boolean = false
 
@@ -45,13 +43,14 @@ export class AuthService {
     return ok
   }
 
-  deslogado(){
+  adm(){
     let ok: boolean = false
 
-    if(environment.token = ''){
+    if(environment.tipo == 'adm'){
       ok = true
     }
 
     return ok
   }
+
 }

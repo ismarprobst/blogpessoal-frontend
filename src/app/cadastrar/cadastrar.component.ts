@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -16,7 +17,8 @@ tipoUsuario: string
 
   constructor(
     private authService: AuthService,
-    private router: Router  // para fazermos o redirecionamento de rota pelo TS
+    private router: Router,  // para fazermos o redirecionamento de rota pelo TS
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -35,12 +37,12 @@ tipoUsuario: string
     this.user.tipo = this.tipoUsuario
 
     if (this.user.senha != this.confirmarSenha){
-      alert('As senhas não coincidem! Insira novamente.')
+      this.alertas.showAlertDanger('As senhas não coincidem! Insira novamente.')
     } else {
       this.authService.cadastrar(this.user).subscribe((resp: User)=> //é chamado o cadastrar de authService. Ja o subscribe funciona convertendo a nossa resposta de objeto para JSON, que é como inserimos os dados no post.
       {this.user = resp
       this.router.navigate(['/entrar']) // redireciona para o entrar
-      alert('Usuário cadastrado com sucesso!')
+      this.alertas.showAlertSuccess('Usuário cadastrado com sucesso!')
     
     })
     }
